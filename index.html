@@ -92,16 +92,17 @@ h1,h2,h3,.display{font-family:"Rozha One",Georgia,serif;font-weight:400;line-hei
 .cover-inner{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:min(90vw,480px);text-align:center;
+  z-index:5;
+  transition:opacity .45s;
 }
-.door.l .cover-inner{left:100%;transform:translate(-50%,-50%)}
-.door.r .cover-inner{left:0;transform:translate(-50%,-50%)}
-#cover.open .cover-inner{opacity:0;transition:opacity .45s}
+#cover.open .cover-inner{opacity:0}
+.door::after{z-index:1}
 .cover-box{
-  background:rgba(23,10,17,.55);
+  position:relative;
+  background:var(--garnet-deep);
   border:1px solid rgba(201,162,39,.4);
   border-radius:14px;
   padding:40px 28px;
-  backdrop-filter:blur(2px);
 }
 .cover-names{font-size:clamp(38px,12vw,60px);margin:0}
 .cover-amp{display:block;font-size:.42em;color:var(--gold);margin:2px 0}
@@ -234,24 +235,14 @@ footer .sig{font-family:"Rozha One",serif;font-size:26px}
 
 <!-- ================= COVER ================= -->
 <div id="cover">
-  <div class="door l jali">
-    <div class="cover-inner">
-      <div class="cover-box">
-        <h1 class="cover-names gold-text">Arjun<span class="cover-amp">&amp;</span>Priya</h1>
-        <p class="cover-date">5 DECEMBER 2026 &middot; JAIPUR</p>
-        <p class="cover-tag">Together with our families</p>
-        <button class="open-btn" id="openBtnL">Open invitation</button>
-      </div>
-    </div>
-  </div>
-  <div class="door r jali">
-    <div class="cover-inner" aria-hidden="true">
-      <div class="cover-box">
-        <h1 class="cover-names gold-text">Arjun<span class="cover-amp">&amp;</span>Priya</h1>
-        <p class="cover-date">5 DECEMBER 2026 &middot; JAIPUR</p>
-        <p class="cover-tag">Together with our families</p>
-        <button class="open-btn" tabindex="-1" aria-hidden="true">Open invitation</button>
-      </div>
+  <div class="door l jali"></div>
+  <div class="door r jali"></div>
+  <div class="cover-inner">
+    <div class="cover-box">
+      <h1 class="cover-names gold-text">Arjun<span class="cover-amp">&amp;</span>Priya</h1>
+      <p class="cover-date">5 DECEMBER 2026 &middot; JAIPUR</p>
+      <p class="cover-tag">Together with our families</p>
+      <button class="open-btn" id="openBtn">Open invitation</button>
     </div>
   </div>
 </div>
